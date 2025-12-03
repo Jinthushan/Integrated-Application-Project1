@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import os
 
 #you can comment out the improvement functions to see the before and after results of the models accuracy
-def negationHandling(words): #negation handling
+def negationSarcHandling(words): #negation handling
     negation_words = {
         "not", "no", "never", "nothing",
         "don't", "doesn't", "didn't", "can't", "couldn't",
@@ -45,7 +45,7 @@ def negationHandling(words): #negation handling
 
 def applyNegHandling(text):
     words = text.split()
-    return negationHandling(words)
+    return negationSarcHandling(words)
 
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
