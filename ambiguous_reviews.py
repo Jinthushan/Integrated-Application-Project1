@@ -30,7 +30,18 @@ plt.xlabel("Entropy")
 plt.ylabel("Review Count")
 plt.show()
 
-amb_df_lr = pd.DataFrame({'review': review_test.values, 'actual':sen_test.values, 'predicted': sen_pred_lr, 'entropy': entropy_lr}) #ambigious reviews dataframe from logistic regression
-amb_df_nb = pd.DataFrame({'review': review_test.values, 'actual':sen_test.values, 'predicted': sen_pred_nb, 'entropy': entropy_nb})
+df_lr = pd.DataFrame({'review': review_test.values, 'actual':sen_test.values, 'predicted': sen_pred_lr, 'entropy': entropy_lr}) 
+df_nb = pd.DataFrame({'review': review_test.values, 'actual':sen_test.values, 'predicted': sen_pred_nb, 'entropy': entropy_nb})
+
+#getting some of the top ambiguous reviews for analysis
+top_amb_lr = df_lr.sort_values(by='entropy',ascending=False).head(20) 
+top_amb_nb = df_nb.sort_values(by='entropy',ascending=False).head(20) 
+
+entropy_threshold = 0.6
+#any review with greater entropy than 0.6 is considered ambiguous 
+amb_df_lr = df_lr[df_lr['entropy'] > entropy_threshold]
+amb_df_nb = df_nb[df_nb['entropy'] > entropy_threshold]
+
+#checking how well the models perform with ambiguous reivews
 
 
