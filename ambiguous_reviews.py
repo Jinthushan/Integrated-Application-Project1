@@ -43,5 +43,9 @@ amb_df_lr = df_lr[df_lr['entropy'] > entropy_threshold]
 amb_df_nb = df_nb[df_nb['entropy'] > entropy_threshold]
 
 #checking how well the models perform with ambiguous reivews
+print("Logistic Regression Accuracy - Ambiguous Reviews:", accuracy_score(amb_df_lr['actual'], amb_df_lr['predicted']))
+print(classification_report(amb_df_lr['actual'], amb_df_lr['predicted']))
 
+print("Naive Bayes Accuracy - Ambiguous Reviews:", accuracy_score(amb_df_nb['actual'], amb_df_nb['predicted']))
+print(classification_report(amb_df_nb['actual'], amb_df_nb['predicted']))
 

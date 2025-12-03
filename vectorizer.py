@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 import os
 
+#you can comment out the improvement functions to see the before and after results of the models accuracy
 def negationHandling(words): #negation handling
     negation_words = {
         "not", "no", "never", "nothing",
@@ -46,9 +47,10 @@ def applyNegHandling(text):
     words = text.split()
     return negationHandling(words)
 
+
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
-df = pd.read_csv(base_dir + r"\imdb_dataset.csv") #dataset
+df = pd.read_csv(base_dir + r"\Dataset\imdb_dataset.csv") #dataset
 
 
 df['review'] = df['review'].str.lower().str.replace('[,?.!"]', '', regex=True) #cleaning text
